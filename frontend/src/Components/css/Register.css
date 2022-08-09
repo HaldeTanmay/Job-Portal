@@ -1,0 +1,22 @@
+#con1{
+        background-image: url('../comp_img/reg4.jpg');
+        height: fit-content;
+        width: 65vw;
+        background-size: cover;
+        border: 2px solid rgb(50, 50, 112);
+        overflow: auto;
+}
+
+.form{
+    margin-top: 4vh;
+    margin-left: 2vw;
+}
+
+.reg-form {
+    margin-top: 3vh;
+}
+
+.form-title{
+    color:#2525b5;
+    margin-left: -11px;
+}

@@ -3,6 +3,7 @@ import { Footer } from "./Components/Footer";
 import { About } from "./Components/About"
 import { Login } from "./Components/Login";
 import { Register } from "./Components/Register";
+import { Recruiter } from "./Components/Recruiter";
 import { Home } from "./Components/Home";
 import './App.css';
 import {
@@ -23,6 +24,8 @@ function App() {
           <Route exact path="/login" element={<Login />}>
           </Route>
           <Route exact path="/register" element={<Register />}>
+          </Route>
+          <Route exact path="/recruiter" element={<Recruiter />}>
           </Route>
         </Routes>
 

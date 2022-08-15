@@ -73,7 +73,7 @@ export const Recruiter = () => {
         else {
             window.alert(" Registration successful");
             console.log("Registration successful");
-            // history.pushState('/login');
+            navigate('/login');
         }
 
     }

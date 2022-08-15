@@ -72,7 +72,7 @@ export const Register = () => {
         else {
             window.alert(" Registration successful");
             console.log("Registration successful");
-            // navigate('/login');
+            navigate('/login');
         }
 
     }

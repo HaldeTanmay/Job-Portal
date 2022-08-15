@@ -1,39 +1,3 @@
-// const express = require("express");
-// const path = require('path');
-// const app = express();
-// const hbs = require('hbs');
-// require("./db/conn");
-// const port = process.env.PORT || 3000;
-
-// const static_path = path.join(__dirname, "../public");
-// const template_path = path.join(__dirname, "../templates/views");
-// const partials_path = path.join(__dirname, "../templates/partials");
-
-// app.use(express.static(static_path));
-// app.set("view engine", "hbs");
-// app.set("views", template_path);
-// hbs.registerPartials(partials_path);
-
-// app.get("/", (req, res) => {
-//     res.render("index")
-// });
-
-// app.listen(port, () => {
-//     console.log(`server is running at port No ${port}`);
-// });
-
-// const express = require("express");
-// const router=express.Router();
-
-// router.get('./',(req,res)=>{
-//     res.send("server connected");
-// });
-
-// router.post('./register',(req,res)=>{
-//     console.log(req.body);
-//     res.json({message:req.body});
-// });
-// module.exports=router;
 
 const express = require("express");
 const cors = require('cors');

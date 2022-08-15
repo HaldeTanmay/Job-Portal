@@ -3,6 +3,7 @@ const router = express.Router();
 
 require('../db/conn');
 const UserModel = require('../models/Users');
+const RecruiterModel = require('../models/Company');
 
 router.get("/", (req, res) => {
     res.send('welcome');
@@ -52,6 +53,35 @@ router.post("/register", async (req, res) => {
 
             const userRegister = await user.save();
             if (userRegister) {
+                res.status(201).json({ message: "user registerd successfully" })
+            }
+        }
+        //hed
+    } catch (error) {
+        console.log("error");
+    }
+
+
+});
+router.post("/recruiter", async (req, res) => {
+    const { name, email, phone, address, profession, password, cpassword } = req.body;
+    if (!name || !email || !phone || !address || !profession || !password || !cpassword) {
+        return res.status(422).json({ error: "Plz filled the field properly" });
+    }
+
+    try {
+        const userExist = await RecruiterModel.findOne({ email: email });
+        if (userExist) {
+            return res.status(422).json({ error: "Email already exist" });
+        }
+        else if (password != cpassword) {
+            return res.status(422).json({ error: "password not matching" });
+        }
+        else {
+            const Recruiter = new RecruiterModel({ name, email, phone, address, profession, password, cpassword });
+
+            const userRecruiter = await Recruiter.save();
+            if (userRecruiter) {
                 res.status(201).json({ message: "user registerd successfully" })
             }
         }

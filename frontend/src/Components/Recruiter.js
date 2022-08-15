@@ -56,7 +56,7 @@ export const Recruiter = () => {
     const PostData = async (e) => {
         e.preventDefault();
         const { name, email, phone, address, profession, password, cpassword } = user;
-        const res = await fetch('http://localhost:4000/register', {
+        const res = await fetch('http://localhost:4000/recruiter', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

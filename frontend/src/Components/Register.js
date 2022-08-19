@@ -35,10 +35,22 @@ export const Register = () => {
         name: "", email: "", phone: "", address: "", profession: "", password: "", cpassword: ""
     });
 
+    // const [email, setEmail] = useState('');
+    // const [error, setError] = useState('');
+    // const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // const checkEmail = (e) => {
+    //     setEmail(e.target.value);
+    //     if (regex.test(email === false)) {
+    //         setError('Please Enter valid email address');
+    //     }
+    // }
 
     let name, value;
     const handleInputs = (e) => {
-        console.log(e);
+        // setEmail(e.target.vaue);
+        // if (regex.test(email === false)) {
+        //     setError('Please Enter valid email address');
+        // }
         name = e.target.name;
         value = e.target.value;
 
@@ -65,8 +77,31 @@ export const Register = () => {
             })
         });
         const data = await res.json();
+        // const [alert, setAlert] = useState(null);
+        // const showAlert = (message, type) => {
+        //     setAlert({
+        //         msg: message,
+        //         type: type
+        //     })
+        //     setTimeout(() => {
+        //         setAlert(null);
+        //     }, 1500);
+        // }
         if (res.status === 422 || !data) {
-            window.alert("Invalid Registration");
+            // toast.warning('Danger');
+            // showAlert("Email already exist", 'success');
+            window.alert("Email already exist");
+            console.log("Invalid Registration");
+        }
+        else if (res.status === 423 || !data) {
+            // toast.warning('Danger')
+            // showAlert("Password not matching", 'success');
+            window.alert("Password not matching");
+            console.log("Invalid Registration");
+        }
+        else if (res.status === 424 || !data) {
+
+            window.alert("Enter valid email address");
             console.log("Invalid Registration");
         }
         else {
@@ -112,6 +147,7 @@ export const Register = () => {
                                     <input type="email" name="email" id='email' autoComplete='off' required={true}
                                         value={user.email} onChange={handleInputs}
                                         placeholder='Your E-mail' style={style1} />
+                                    {/* <p className='text-danger p-2 m-2'>{error}</p> */}
                                 </div>
 
                                 <div className="form-group">

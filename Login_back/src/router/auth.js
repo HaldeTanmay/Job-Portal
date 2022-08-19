@@ -42,11 +42,29 @@ router.post("/register", async (req, res) => {
 
     try {
         const userExist = await UserModel.findOne({ email: email });
-        if (userExist) {
+        const em = email;
+        // const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        // if (regex.test(email === false)) {
+        //     console.log("error");
+        //     return res.status(425).json({ error: "Please Enter valid email address" });
+
+        // }
+        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        // const emailValidation = () => {
+        //     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        //     if (!em || regex.test(em) === false) {
+        //         return false;
+        //     }
+        //     return true;
+        // }
+        if (!regex.test(email)) {
+            return res.status(424).json({ error: "Please write correct email address" });
+        }
+        else if (userExist) {
             return res.status(422).json({ error: "Email already exist" });
         }
         else if (password != cpassword) {
-            return res.status(422).json({ error: "password not matching" });
+            return res.status(423).json({ error: "password not matching" });
         }
         else {
             const user = new UserModel({ name, email, phone, address, profession, password, cpassword });

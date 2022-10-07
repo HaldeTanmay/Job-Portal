@@ -3,17 +3,27 @@ const router = express.Router();
 
 require('../db/conn');
 const UserModel = require('../models/Users');
-
+var database
 router.get("/", (req, res) => {
-    res.send('welcome');
 });
-router.get("/register", (req, res) => {
-    res.send('register');
+router.get("/pr", async (req, res) => {
+    // res.send('register');
+    // database.collection('users').find({}).toArray((err, result) => {
+    //     if (err) throw err
+    //     resp.send(result)
+    // })
+    try {
+        const data = await UserModel.find();
+        res.send(data);
+
+    } catch (e) {
+        res.send(e);
+    }
 });
 
 //promises
 // router.post("/register", (req, res) => {
-//     const { name, email, phone, address, profession, password, cpassword } = req.body;
+//     const { name, email, phone,  password, cpassword } = req.body;
 //     if (!name || !email || !phone || !address || !profession || !password || !cpassword) {
 //         return res.status(422).json({ error: "Plz filled the field properly" });
 //     }
@@ -21,7 +31,7 @@ router.get("/register", (req, res) => {
 //         if (userExist) {
 //             return res.status(422).json({ error: "Email already exist" });
 //         }
-//         const user = new UserModel({ name, email, phone, address, profession, password, cpassword });
+//         const user = new UserModel({ name, email, phone,  password, cpassword });
 
 //         user.save().then(() => {
 //             res.status(201).json({ message: "user registerd successfully" })
@@ -34,8 +44,8 @@ router.get("/register", (req, res) => {
 // });
 
 router.post("/register", async (req, res) => {
-    const { name, email, phone, address, profession, password, cpassword } = req.body;
-    if (!name || !email || !phone || !address || !profession || !password || !cpassword) {
+    const { name, email, phone, password, cpassword } = req.body;
+    if (!name || !email || !phone || !password || !cpassword) {
         return res.status(422).json({ error: "Plz filled the field properly" });
     }
 
@@ -48,7 +58,7 @@ router.post("/register", async (req, res) => {
             return res.status(422).json({ error: "password not matching" });
         }
         else {
-            const user = new UserModel({ name, email, phone, address, profession, password, cpassword });
+            const user = new UserModel({ name, email, phone, password, cpassword });
 
             const userRegister = await user.save();
             if (userRegister) {
@@ -84,11 +94,14 @@ router.post('/login', async (req, res) => {
     } catch (e) {
         console.log(e);
     }
-})
-
-
-
-
+});
+// var database
+// router.get('/contact', (req, resp) => {
+//     database.collection('users').find({}).toArray((err, result) => {
+//         if (err) throw err
+//         resp.send(result)
+//     })
+// })
 
 
 module.exports = router;

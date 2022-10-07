@@ -5,7 +5,6 @@ export const Footer = () => {
         position: "relative",
         width: "100%",
         border: "3px solid blue",
-        top: "80vh"
     }
     return (
         <div className='bg-dark text-light py-3' style={style1}>

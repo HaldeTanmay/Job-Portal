@@ -6,6 +6,9 @@ import { Register } from "./Components/Register";
 import { Home } from "./Components/Home";
 import { Contact } from "./Components/Contact";
 import { Dashboard } from "./Components/Dashboard";
+import { Job } from "./Components/Job";
+import { Error } from "./Components/Error";
+import { Eg } from "./Components/Eg";
 import Pr from "./Components/Pr";
 import './App.css';
 import {
@@ -34,6 +37,12 @@ function App() {
           <Route exact path="/contact" element={<Contact />}>
           </Route>
           <Route exact path="/pr" element={<Pr />}>
+          </Route>
+          <Route exact path="/job" element={<Job />}>
+          </Route>
+          <Route exact path="*" element={<Error />}>
+          </Route>
+          <Route exact path="/eg" element={<Eg />}>
           </Route>
         </Routes>
 

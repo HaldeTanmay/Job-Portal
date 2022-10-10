@@ -51,6 +51,7 @@ import "./css/style.css"
 import logo2 from "../Images/job.jpg";
 import { Link } from 'react-router-dom';
 
+
 export const Navbar = () => {
 
     return (

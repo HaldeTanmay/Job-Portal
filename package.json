@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "global": "^4.4.0",
+    "react-fc": "^0.41.0",
     "yarn": "^1.22.19"
   }
 }

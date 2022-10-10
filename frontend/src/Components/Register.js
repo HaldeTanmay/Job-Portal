@@ -6,6 +6,7 @@ import "./css/Register.css"
 import logo4 from "../Images/4.jpg";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { useNavigate } from "react-router-dom";
 // import Axios from "axios";
 
 
@@ -32,6 +33,7 @@ export const Register = () => {
         name: "", email: "", phone: "", password: "", cpassword: ""
     });
 
+    const navigate = useNavigate();
 
     let name, value;
     const handleInputs = (e) => {
@@ -49,6 +51,7 @@ export const Register = () => {
     //     });
     // };
 
+
     const PostData = async (e) => {
         e.preventDefault();
         const { name, email, phone, password, cpassword } = user;
@@ -61,6 +64,7 @@ export const Register = () => {
                 name, email, phone, password, cpassword
             })
         });
+
         const data = await res.json();
         if (res.status === 422 || !data) {
             window.alert("Invalid Registration");
@@ -69,6 +73,7 @@ export const Register = () => {
         else {
             window.alert(" Registration successful");
             console.log("Registration successful");
+            navigate("/login");
             // history.pushState('/login');
         }
 

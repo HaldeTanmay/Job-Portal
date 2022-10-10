@@ -14,8 +14,10 @@ export const Dashboard = () => {
                     <h2 class="logo">JJO</h2>
                     <div class="nav-items">
                         <Link className="nav-link" to="/profile">Profile</Link>
+                        <Link className="nav-link" to="/contact">Carrer</Link>
                         <Link className="nav-link" to="/about">About Us</Link>
                         <Link className="nav-link" to="/contact">Contact Us</Link>
+
                         <button>Logout</button>
                     </div>
                 </nav>
@@ -27,7 +29,7 @@ export const Dashboard = () => {
             </header>
             <div class="job-offers">
                 <h1>Newest Job Offers </h1>
-                <Link className="nav-link" to="/register">See All Offers</Link>
+                <Link className="nav-link" to="/job">See All Offers</Link>
             </div>
             <section class="jobs-section">
                 <div class="job">

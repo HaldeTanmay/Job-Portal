@@ -5,8 +5,17 @@ import logo2 from "../Images/icon-briefcase.png";
 import "./css/dashboard.css"
 import { Link } from 'react-router-dom';
 import { Footer } from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
+    const navigate = useNavigate();
+    const navigateHome = () => {
+        navigate('/');
+    };
+
+    const navigatePost = () => {
+        navigate('/JobPost');
+    };
     return (
         <>
             <header class="hero-section">
@@ -18,13 +27,13 @@ export const Dashboard = () => {
                         <Link className="nav-link" to="/about">About Us</Link>
                         <Link className="nav-link" to="/contact">Contact Us</Link>
 
-                        <button>Logout</button>
+                        <button onClick={navigateHome}>Logout</button>
                     </div>
                 </nav>
                 <div class="hero-text-section">
                     <h1>Juniors Make IT Work</h1>
                     <p>Hire and Invest in highly skilled juniors now!</p>
-                    <button>Post Offer Now</button>
+                    <button onClick={navigatePost}>Post a Offer</button>
                 </div>
             </header>
             <div class="job-offers">

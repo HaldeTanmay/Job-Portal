@@ -3,7 +3,7 @@ import React from "react";
 import './css/pr.css';
 // import { useState } from 'react';
 class Pr extends React.Component {
-    Constructor
+    // Constructor
     constructor(props) {
         super(props);
 

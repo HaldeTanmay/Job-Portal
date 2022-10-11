@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 
 require('../db/conn');
 const UserModel = require('../models/Users');
+const JobModel = require('../models/Job');
 var database
 router.get("/", (req, res) => {
 });
@@ -15,6 +16,20 @@ router.get("/pr", async (req, res) => {
     // })
     try {
         const data = await UserModel.find();
+        res.send(data);
+
+    } catch (e) {
+        res.send(e);
+    }
+});
+router.get("/apply", async (req, res) => {
+    // res.send('register');
+    // database.collection('users').find({}).toArray((err, result) => {
+    //     if (err) throw err
+    //     resp.send(result)
+    // })
+    try {
+        const data = await JobModel.find();
         res.send(data);
 
     } catch (e) {
@@ -70,6 +85,26 @@ router.post("/register", async (req, res) => {
     } catch (error) {
         console.log("error");
     }
+
+
+});
+router.post("/JobPost", async (req, res) => {
+    const { cname, jp, rq, skill, rl } = req.body;
+    if (!cname || !jp || !rq || !skill || !rl) {
+        return res.status(422).json({ error: "Plz filled the field properly" });
+    }
+
+
+    else {
+        const user = new JobModel({ cname, jp, rq, skill, rl });
+
+        const userRegister = await user.save();
+        if (userRegister) {
+            res.status(201).json({ message: "Job Posted successfully" })
+        }
+    }
+
+
 
 
 });

@@ -9,7 +9,9 @@ import { Dashboard } from "./Components/Dashboard";
 import { Job } from "./Components/Job";
 import { Error } from "./Components/Error";
 import { Eg } from "./Components/Eg";
+import { JobPost } from "./Components/JobPost";
 import Pr from "./Components/Pr";
+import ApplyJob from "./Components/ApplyJob";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -38,11 +40,15 @@ function App() {
           </Route>
           <Route exact path="/pr" element={<Pr />}>
           </Route>
+          <Route exact path="/apply" element={<ApplyJob />}>
+          </Route>
           <Route exact path="/job" element={<Job />}>
           </Route>
           <Route exact path="*" element={<Error />}>
           </Route>
           <Route exact path="/eg" element={<Eg />}>
+          </Route>
+          <Route exact path="/jobpost" element={<JobPost />}>
           </Route>
         </Routes>
 
